@@ -38,6 +38,9 @@ export function CardStack() {
 const styles = StyleSheet.create({
   container: {
     height: 220,
+    // 280 (largeur carte) + 2 * 30 (décalage des cartes empilées)
+    width: 340,
+    alignSelf: 'center',
   },
   card: {
     width: 280,
