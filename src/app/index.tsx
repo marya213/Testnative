@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <ProfileCard
           name="Big Lol"
           title="Développeur React Mobile"
-          imageUri="https://example.com/photo.jpg"
+          image={require('../../assets/images/bob.jpeg')}
         />
         <CardStack />
         <ThemedView style={styles.gridContainer}>
