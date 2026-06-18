@@ -3,6 +3,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
+import { GridLayout } from '@/components/GridLayout';
 import { HintRow } from '@/components/hint-row';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -55,6 +56,10 @@ export default function HomeScreen() {
           />
         </ThemedView>
 
+        <ThemedView style={styles.gridContainer}>
+          <GridLayout />
+        </ThemedView>
+
         {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
     </ThemedView>
@@ -94,5 +99,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  gridContainer: {
+    alignSelf: 'stretch',
   },
 });
