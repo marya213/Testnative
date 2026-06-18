@@ -1,15 +1,17 @@
 import type { ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type HolyGrailLayoutProps = {
   children?: ReactNode;
 };
 
 export function HolyGrailLayout({ children }: HolyGrailLayoutProps) {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.header}>
+    <View style={styles.root}>
+      <View style={[styles.header, { height: 56 + insets.top, paddingTop: insets.top }]}>
         <Text style={styles.headerFooterText}>Header</Text>
       </View>
       <View style={styles.body}>
@@ -27,14 +29,17 @@ export function HolyGrailLayout({ children }: HolyGrailLayoutProps) {
           <Text style={styles.mainText}>Right Sidebar</Text>
         </View>
       </View>
-      <View style={styles.footer}>
+      <View style={[styles.footer, { height: 48 + insets.bottom, paddingBottom: insets.bottom }]}>
         <Text style={styles.headerFooterText}>Footer</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   sidebars: {
     width: 60,
     justifyContent: 'center',
@@ -49,12 +54,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   header: {
-    height: 56,
     justifyContent: 'center',
     backgroundColor: '#1c2855',
   },
   footer: {
-    height: 48,
     justifyContent: 'center',
     backgroundColor: '#1c2855',
   },

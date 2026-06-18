@@ -1,17 +1,16 @@
 import { DarkTheme, DefaultTheme, ThemeProvider, Slot } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import { useColorScheme, View } from 'react-native';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppSafeAreaView from '../components/AppSafeAreaView';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   return (
-    <AppSafeAreaView>
+    <View style={{ flex: 1 }}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <AnimatedSplashOverlay />
         <Slot />
       </ThemeProvider>
-    </AppSafeAreaView>
+    </View>
   );
 }
