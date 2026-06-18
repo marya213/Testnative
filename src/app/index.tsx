@@ -9,6 +9,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import ProfileCard from '@/components/ProfileCard';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -56,6 +57,11 @@ export default function HomeScreen() {
           />
         </ThemedView>
 
+        <ProfileCard
+          name="Big Lol"
+          title="Développeur React Mobile"
+          imageUri="https://example.com/photo.jpg"
+        />
         <ThemedView style={styles.gridContainer}>
           <GridLayout />
         </ThemedView>
