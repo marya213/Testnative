@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, RefreshControl, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { ImageResizeModes } from '@/components/image-resize-modes';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, Spacing } from '@/constants/theme';
@@ -65,9 +66,12 @@ export default function UIScreen() {
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
           ListHeaderComponent={
-            <ThemedText type="title" style={styles.title}>
-              Salut, ça va ?
-            </ThemedText>
+            <>
+              <ThemedText type="title" style={styles.title}>
+                Salut, ça va ?
+              </ThemedText>
+              <ImageResizeModes />
+            </>
           }
           renderItem={({ item }) => (
             <ThemedView type="backgroundElement" style={styles.row}>
