@@ -1,16 +1,19 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ImageSourcePropType } from "react-native";
 
 type ProfileCardProps = {
   name: string;
   title: string;
-  imageUri: string;
+  imageUri?: string;
+  image?: ImageSourcePropType;
 };
 
-export default function ProfileCard({ name, title, imageUri }: ProfileCardProps) {
+export default function ProfileCard({ name, title, imageUri, image }: ProfileCardProps) {
+  const imageSource = image ?? (imageUri ? { uri: imageUri } : undefined);
+
   return (
     <View style={styles.card}>
-      <Image source={{ uri: imageUri }} style={styles.profileImage} />
+      <Image source={imageSource} style={styles.profileImage} />
       <Text style={styles.nameText}>{name}</Text>
       <Text style={styles.titleText}>{title}</Text>
       <View style={styles.button}>
