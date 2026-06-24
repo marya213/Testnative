@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, RefreshControl, StyleSheet } from 'react-n
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ImageResizeModes } from '@/components/image-resize-modes';
+import { ModalComponent } from '@/components/modal-component';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, Spacing } from '@/constants/theme';
@@ -70,6 +71,7 @@ export default function UIScreen() {
               <ThemedText type="title" style={styles.title}>
                 Salut, ça va ?
               </ThemedText>
+              <ModalComponent />
               <ImageResizeModes />
             </>
           }
