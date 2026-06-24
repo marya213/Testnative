@@ -1,24 +1,26 @@
-import { Link } from 'expo-router';
 import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { CONTACTS } from '@/data/contacts';
+import { useTypedRouter } from '@/hooks/use-typed-router';
 
 export default function ContactsScreen() {
+  const router = useTypedRouter();
+
   return (
     <FlatList
       data={CONTACTS}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.list}
       renderItem={({ item }) => (
-        <Link href={`/contact/${item.id}`} asChild>
-          <Pressable style={styles.row}>
-            <Image source={{ uri: item.avatar }} style={styles.avatar} />
-            <View>
-              <Text style={styles.name}>{item.name}</Text>
-              <Text style={styles.role}>{item.role}</Text>
-            </View>
-          </Pressable>
-        </Link>
+        <Pressable
+          style={styles.row}
+          onPress={() => router.push('contact/[id]', { id: item.id })}>
+          <Image source={{ uri: item.avatar }} style={styles.avatar} />
+          <View>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.role}>{item.role}</Text>
+          </View>
+        </Pressable>
       )}
     />
   );
